@@ -414,7 +414,7 @@ def build_and_upload(files, browser, config, upload_map):
 
             # open file
             try:
-                with open(file_object.src_path, 'r') as file:
+                with open(file_object.src_path, 'r', encoding='utf-8') as file:
                     contents = file.read()
             except Exception:
                 message = f'Could not open/read {file_object.path}. Skipping.'
@@ -446,7 +446,7 @@ def build_and_upload(files, browser, config, upload_map):
                     if not os.path.isdir(build_path.parent):
                         os.makedirs(build_path.parent)
                     # and write the processed contents
-                    with open(build_path, 'w') as file:
+                    with open(build_path, 'w', encoding='utf-8') as file:
                         file.write(processed)
                 except Exception:
                     message = f"Couldn not write {str(file_object.build_path)}. Skipping."
